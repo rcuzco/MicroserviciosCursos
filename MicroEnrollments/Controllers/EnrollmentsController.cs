@@ -62,14 +62,14 @@ namespace MicroEnrollments.Controllers
             var enrollments = LoadEnrollments();
 
             // Verify student exists
-            var studentResponse = await _httpClient.GetAsync($"http://localhost:6187/api/students/{newEnrollment.StudentId}");
+            var studentResponse = await _httpClient.GetAsync($"http://students:5187/api/students/{newEnrollment.StudentId}");
             if (!studentResponse.IsSuccessStatusCode)
             {
                 return BadRequest("Invalid Student");
             }
 
             // Verify course exists
-            var courseResponse = await _httpClient.GetAsync($"http://localhost:6156/api/courses/{newEnrollment.CourseId}");
+            var courseResponse = await _httpClient.GetAsync($"http://courses:5156/api/courses/{newEnrollment.CourseId}");
             if (!courseResponse.IsSuccessStatusCode)
             {
                 return BadRequest("Invalid Course");
