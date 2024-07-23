@@ -11,9 +11,8 @@ namespace MicroPayments.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [ProducesResponseType(typeof(PaymentResult), StatusCodes.Status200OK)]
-        public ActionResult ProcessPayment(PaymentRequest paymentRequest)
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]        
+        public ActionResult<PaymentResult> ProcessPayment(PaymentRequest paymentRequest)
         {
             if (paymentRequest is null)
             {

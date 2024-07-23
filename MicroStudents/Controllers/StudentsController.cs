@@ -55,7 +55,7 @@ namespace MicroStudents.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]        
-        public ActionResult<CreatedAtActionResult> CreateStudent(Student newStudent)
+        public ActionResult<Student> CreateStudent(Student newStudent)
         {
             var students = LoadStudents();
             newStudent.Id = students.Count + 1;

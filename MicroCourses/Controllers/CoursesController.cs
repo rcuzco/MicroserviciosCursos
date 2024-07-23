@@ -55,9 +55,8 @@ namespace MicroCourses.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [ProducesResponseType(typeof(CreatedAtActionResult), StatusCodes.Status200OK)]
-        public ActionResult CreateCourse(Course newCourse)
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]        
+        public ActionResult<Course> CreateCourse(Course newCourse)
         {
             var courses = LoadCourses();
             newCourse.Id = courses.Count + 1;

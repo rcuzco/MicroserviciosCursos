@@ -54,9 +54,8 @@ namespace MicroTeachers.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [ProducesResponseType(typeof(CreatedAtActionResult), StatusCodes.Status200OK)]
-        public ActionResult CreateTeacher(Teacher newTeacher)
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]        
+        public ActionResult<Teacher> CreateTeacher(Teacher newTeacher)
         {
             var teachers = LoadTeachers();
             newTeacher.Id = teachers.Count + 1;

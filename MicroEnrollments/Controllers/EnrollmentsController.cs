@@ -57,7 +57,7 @@ namespace MicroEnrollments.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> CreateEnrollment(Enrollment newEnrollment)
+        public async Task<ActionResult<Enrollment>> CreateEnrollment(Enrollment newEnrollment)
         {
             var enrollments = LoadEnrollments();
 
