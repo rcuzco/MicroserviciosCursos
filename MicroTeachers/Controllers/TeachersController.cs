@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MicroTeachers.Model;
 using System.Text.Json;
 
@@ -40,6 +39,16 @@ namespace MicroTeachers.Controllers
             var teacher = teachers.Find(t => t.Id == id);
             if (teacher == null) return NotFound();
             return Ok(teacher);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<List<Teacher>> GetTeachers()
+        {
+            var teachers = LoadTeachers();            
+            return Ok(teachers);
         }
 
         [HttpPost]

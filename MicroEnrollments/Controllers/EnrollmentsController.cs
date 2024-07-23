@@ -43,6 +43,16 @@ namespace MicroEnrollments.Controllers
             return enrollment;
         }
 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<List<Enrollment>> GetEnrollments()
+        {
+            var enrollments = LoadEnrollments();            
+            return enrollments;
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

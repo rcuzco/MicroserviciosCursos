@@ -41,12 +41,21 @@ namespace MicroStudents.Controllers
             return student;
         }
 
-        [HttpPost]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [ProducesResponseType(typeof(CreatedAtActionResult), StatusCodes.Status200OK)]
-        public IActionResult CreateStudent(Student newStudent)
+        public ActionResult<List<Student>> GetStudents()
+        {
+            var students = LoadStudents();            
+            return students;
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]        
+        public ActionResult<CreatedAtActionResult> CreateStudent(Student newStudent)
         {
             var students = LoadStudents();
             newStudent.Id = students.Count + 1;
