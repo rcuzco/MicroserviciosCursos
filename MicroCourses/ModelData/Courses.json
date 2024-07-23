@@ -1,0 +1,14 @@
+[
+    {
+        "Id": 1,
+        "Title": "Introduction to Programming",
+        "Description": "Learn the basics of programming.",
+        "TeacherId": 1
+    },
+    {
+        "Id": 2,
+        "Title": "Advanced Databases",
+        "Description": "Deep dive into database management.",
+        "TeacherId": 2
+    }
+]

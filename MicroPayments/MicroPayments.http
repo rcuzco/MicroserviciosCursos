@@ -1,0 +1,6 @@
+@MicroPayments_HostAddress = http://localhost:5010
+
+GET {{MicroPayments_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

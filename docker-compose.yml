@@ -1,0 +1,66 @@
+services:
+  students:
+    build:
+      context: ./MicroStudents
+      dockerfile: Dockerfile
+    ports:
+      - "6187:5187"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5187
+    networks:
+
+      - microservices-network
+
+  courses:
+    build:
+      context: ./MicroCourses
+      dockerfile: Dockerfile
+    ports:
+      - "6156:5156"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5156
+  
+    networks:
+      - microservices-network
+
+  teachers:
+    build:
+      context: ./MicroTeachers
+      dockerfile: Dockerfile
+    ports:
+      - "6200:5200"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5200
+    networks:
+      - microservices-network
+
+  enrollments:
+    build:
+      context: ./MicroEnrollments
+      dockerfile: Dockerfile
+    ports:
+      - "6125:5125"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5125
+    networks:
+      - microservices-network
+
+  payments:
+    build:
+      context: ./MicroPayments
+      dockerfile: Dockerfile
+    ports:
+      - "6010:5010"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5010
+    networks:
+      - microservices-network        
+
+networks:
+  microservices-network:
+    driver: bridge
