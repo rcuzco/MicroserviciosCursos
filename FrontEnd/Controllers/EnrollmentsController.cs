@@ -7,7 +7,7 @@ namespace FrontEnd.Controllers
     public class EnrollmentsController : Controller
     {
         private readonly ApiService _apiService;
-        private readonly string _baseUrl;
+        private readonly string? _baseUrl;
 
         public EnrollmentsController(ApiService apiService, IConfiguration configuration)
         {
@@ -17,7 +17,7 @@ namespace FrontEnd.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var enrollments = await _apiService.GetAsync<List<Enrollment>>(_baseUrl);
+            var enrollments = await _apiService.GetAsync<List<Enrollment>>(_baseUrl!);
             return View(enrollments);
         }
 
@@ -31,7 +31,7 @@ namespace FrontEnd.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _apiService.PostAsync(_baseUrl, enrollment);
+                await _apiService.PostAsync(_baseUrl!, enrollment);
                 return RedirectToAction(nameof(Index));
             }
             return View(enrollment);

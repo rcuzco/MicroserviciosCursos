@@ -7,7 +7,7 @@ namespace FrontEnd.Controllers
     public sealed class StudentsController : Controller
     {
         private readonly ApiService _apiService;
-        private readonly string _baseUrl;
+        private readonly string? _baseUrl;
 
         public StudentsController(ApiService apiService, IConfiguration configuration)
         {
@@ -17,7 +17,7 @@ namespace FrontEnd.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var students = await _apiService.GetAsync<List<Student>>(_baseUrl);
+            var students = await _apiService.GetAsync<List<Student>>(_baseUrl!);
             return View(students);
         }
 
@@ -31,7 +31,7 @@ namespace FrontEnd.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _apiService.PostAsync(_baseUrl, student);
+                await _apiService.PostAsync(_baseUrl!, student);
                 return RedirectToAction(nameof(Index));
             }
             return View(student);
